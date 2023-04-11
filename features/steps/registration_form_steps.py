@@ -1,7 +1,7 @@
 from behave import *
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from ..database.read_data import database
+from features.read_data import db
 
 
 @given('"{index_page}" page is opened')
@@ -27,6 +27,6 @@ def click_submit(context):
 
 @then('valid data: user01, ss, user01@gmail.com are presence in database')
 def validate_data():
-    assert "user01" in database, "user01 записан б БД"
-    assert "ss" in database, "ss записан б БД"
-    assert "user01@gmail.com" in database, "user01@gmail.com записан б БД"
+    assert "user01" in db, "user01 записан б БД"
+    assert "ss" in db, "ss записан б БД"
+    assert "user01@gmail.com" in db, "user01@gmail.com записан б БД"
