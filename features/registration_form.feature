@@ -1,7 +1,12 @@
 Feature: registration form checks
-
-Scenario: all fields are filled with valid data
+Background: open index page for all registration tests
   Given "http://hr2test.dev-bitrix.by/" page is opened
-  When enter valid data: login "user01", name "ss", password "tests1", conf_pass "tests1", email "user01@gmail.com"
+
+Scenario: valid login, name, password, conf_password, email
+  When enter data: login "user02", name "dd", password "tests1", conf_pass "tests1", email "user02@mail.ru"
   And click submit button
-  Then valid data: user01, ss, user01@gmail.com are presence in database
+  Then the database "database.json" contains: "user02", "dd", "user02@mail.ru"
+
+Scenario: empty fields
+  When click submit button
+  Then login "", name "", password "", conf_pass "", email "" are not present in database
