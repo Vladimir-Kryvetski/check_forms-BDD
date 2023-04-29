@@ -6,3 +6,9 @@ from behave import given
 def open_index_page(context, index):
     context.driver = webdriver.Chrome()
     context.driver.get(index)
+
+
+@given('"{database_path}" is opened')
+def read_database(context, database_path):
+    with open(database_path, 'r') as file:
+        context.db = file.read()

@@ -1,5 +1,5 @@
 login_id = "login"
-name_id = "name"
-password_id = "pass"
-conf_pass_id = "confirm_password"
+name_id = "username"
+password_id = "password"
+conf_pass_id = "confirm-password"
 email_id = "email"
