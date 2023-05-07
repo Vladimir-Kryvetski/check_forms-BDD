@@ -64,10 +64,41 @@ def login_absent(context, name, password, conf_pass, email):
     context.driver.find_element(By.ID, conf_pass_id).send_keys(conf_pass)
     context.driver.find_element(By.ID, name_id).send_keys(name)
 
+@then('entered name - "{name}", email - "{email}" are not present in database')
+def invalid_data(context, name, email):
+    assert name not in context.db, "database accept invalid data"
+    assert email not in context.db, "database accept invalid data"
 
-@then('empty login is not present in database')
-def empty_login(context):
-    pattern_login = r'\"\"' #hardcode
-    match = re.search(pattern_login, context.db)
-    assert match is None, "Empty login isn't present in database"
+@when('enter data: login "{login}", name "{name}", email "{email}"')
+def login_absent(context, login, name, email):
+    context.driver.find_element(By.ID, login_id).send_keys(login)
+    context.driver.find_element(By.ID, email_id).send_keys(email)
+    context.driver.find_element(By.ID, name_id).send_keys(name)
+
+@then('password and confirm password fields must have type password')
+def check_password_type(context):
+    pass_field_type = context.driver.find_element(By.XPATH, "//input[@type= 'password']")
+    assert pass_field_type, "The password field is not masked."
+
+@when('enter data: login "{login}", name "{name}", password "{password}", conf_pass "{conf_pass}"')
+def empty_email(context, login, name, password, conf_pass):
+    context.driver.find_element(By.ID, login_id).send_keys(login)
+    context.driver.find_element(By.ID, name_id).send_keys(name)
+    context.driver.find_element(By.ID, password_id).send_keys(password)
+    context.driver.find_element(By.ID, conf_pass_id).send_keys(conf_pass)
+
+@then('entered name - "{name}" is not present in database')
+def check_empty_email(context, name):
+    assert name not in context.db, "empty email is present in database"
+
+@when('enter data: login "{login}", password "{password}", conf_pass "{conf_pass}", email "{email}"')
+def empty_name(context, login, password, conf_pass, email):
+    context.driver.find_element(By.ID, login_id).send_keys(login)
+    context.driver.find_element(By.ID, password_id).send_keys(password)
+    context.driver.find_element(By.ID, conf_pass_id).send_keys(conf_pass)
+    context.driver.find_element(By.ID, email_id).send_keys(email)
+
+@then('entered login - "{login}" is not present in database')
+def check_empty_name(context, login):
+    assert login not in context.db, "empty name is present in database"
 
