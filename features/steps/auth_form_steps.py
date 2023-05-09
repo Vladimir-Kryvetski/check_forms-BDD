@@ -1,6 +1,6 @@
 from behave import *
 from selenium.webdriver.common.by import By
-from locators import login_id, email_id, password_id, conf_pass_id, name_id, submit_btn_xpath
+from locators import login_id, password_id, submit_btn_xpath, hello_search_xpath
 
 
 @then('password field must have type password')
@@ -37,3 +37,15 @@ def enter_invalid_data(context, login, password):
 @then('list of cookies before login and after login are equal')
 def compare_cookies_not_equal(context):
     assert context.cookies_before_login == context.cookies_after_login, "user is authorized"
+
+@when('enter password "{password}"')
+def enter_pass(context, password):
+    context.driver.find_element(By.ID, password_id).send_keys(password)
+
+@then('word hello or Hello or привет or Привет is present on the page')
+def search_hello_word(context):
+    hello_word_elem = context.driver.find_element(By.XPATH, hello_search_xpath)
+    try:
+        assert hello_word_elem is not None, "hello word or similar word is missing on the page"
+    except NoSuchElementException:
+        assert False, "hello word or similar word is missing on the page"
