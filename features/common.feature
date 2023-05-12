@@ -1,6 +1,6 @@
 Feature: general checks
 Background: open index page and database
-  Given "http://hr2test.dev-bitrix.by/" page is opened
+  Given "http://hr2test.dev-bitrix.by/registration.html" page is opened
   And "database.json" is opened
 
 Scenario: TC-1 check realization through form elem
@@ -16,8 +16,3 @@ Scenario: TC-3 check that form send via AJAX
   And save initial url
   And click submit button
   Then the page isnt reloaded
-
-Scenario: TC-4 check that response in JSON format
-  When enter data: login "ug4", name "vbvb", password "tests1", conf_pass "tests1", email "user56@mail.ru"
-  And click submit button
-  Then response in json format

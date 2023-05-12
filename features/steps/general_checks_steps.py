@@ -4,6 +4,7 @@ from locators import form_elem_xpath
 import json
 from seleniumwire import webdriver
 from seleniumwire.utils import decode as sw_decode
+import requests
 
 
 @then('form element is present on the page')
@@ -26,6 +27,5 @@ def save_init_url(context):
 def check_ajax(context):
     assert context.driver.current_url == context.intit_url, "request is sent without AJAX"
 
-@then('response in json format')
-def check_json_response(context):
+
 

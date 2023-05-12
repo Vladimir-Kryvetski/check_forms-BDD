@@ -1,6 +1,6 @@
 from behave import *
 from selenium.webdriver.common.by import By
-from locators import login_id, email_id, password_id, conf_pass_id, name_id
+from locators import login_id, email_id, password_id, conf_pass_id, name_id, submit_btn_xpath
 import re
 
 
@@ -16,7 +16,7 @@ def enter_data(context, login, name, password, conf_pass, email):
 
 @when('click submit button')
 def click_submit(context):
-    context.driver.find_element(By.CLASS_NAME, "btn").click()
+    context.driver.find_element(By.XPATH, submit_btn_xpath).click()
 
 
 @then('the database contains: user01, dd, user01@mail.ru')
