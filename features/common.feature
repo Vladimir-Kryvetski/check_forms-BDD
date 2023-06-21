@@ -1,7 +1,7 @@
 Feature: general checks
 Background: open index page and database
-  Given "http://hr2test.dev-bitrix.by/registration.html" page is opened
-  And "database.json" is opened
+  Given "http://hr2test.dev-bitrix.by/registr" page is opened
+  And "../../htdocs/DX/database/user.json" is opened
 
 Scenario: TC-1 check realization through form elem
   Then form element is present on the page

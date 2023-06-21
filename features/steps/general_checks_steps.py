@@ -1,10 +1,6 @@
 from behave import *
 from selenium.webdriver.common.by import By
 from locators import form_elem_xpath
-import json
-from seleniumwire import webdriver
-from seleniumwire.utils import decode as sw_decode
-import requests
 
 
 @then('form element is present on the page')
