@@ -1,7 +1,7 @@
 Feature: registration form checks
 Background: open index page and database for all registration tests
-  Given "http://hr2test.dev-bitrix.by/" page is opened
-  And "database.json" is opened
+  Given "http://hr2test.dev-bitrix.by/registr" page is opened
+  And "../../htdocs/DX/database/user.json" is opened
 
 Scenario: TC-1 valid login, name, password, conf_password, email
   When enter data: login "user01", name "dd", password "tests1", conf_pass "tests1", email "user01@mail.ru"
@@ -28,8 +28,8 @@ Scenario: TC-5 login should be more than 5 chars
   And click submit button
   Then  login with 5 char is not present in database
 
-Scenario: TC-6 login is empty
-  When  enter data: name "abc", password "tests1", conf_pass "tests1", email "user07@mail.ru"
+Scenario: TC-6 login contains only spaces
+  When  enter data: login "      ", name "abc", password "tests1", conf_pass "tests1", email "user07@mail.ru"
   And click submit button
   Then  entered name - "abc", email - "user07@mail.ru" are not present in database
 
@@ -122,7 +122,7 @@ Scenario: TC-25 Check empty name
   Then entered login - "user116" is not present in database
 
 Scenario: TC-26 Check min length of the name 2 chars
-  When enter data: login "user117", name "io", password "tests1", conf_pass "tests1", email "user117@mail.ru"
+  When enter data: login "user117", name "n", password "tests1", conf_pass "tests1", email "user117@mail.ru"
   And click submit button
   Then entered login - "user117" is not present in database
 

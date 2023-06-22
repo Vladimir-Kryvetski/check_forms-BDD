@@ -47,7 +47,7 @@ def spaces_begining_login(context):
 
 @then('login with spaces in the end is not present in database')
 def spaces_end_login(context):
-    pattern_login = r'\bwwwwww\s\s\b' #hardcode
+    pattern_login = r'\bwwwwww\s\s' #hardcode
     match = re.search(pattern_login, context.db)
     assert match is None, "login with spaces in the end is present in database"
 
