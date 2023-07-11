@@ -6,7 +6,7 @@ Background: open index page and database for all registration tests
 Scenario: TC-1 valid login, name, password, conf_password, email
   When enter data: login "user01", name "dd", password "tests1", conf_pass "tests1", email "user01@mail.ru"
   And click submit button
-  Then the database contains: user01, dd, user01@mail.ru
+  Then the database contains: "user01", "dd", "user01@mail.ru"
 
 Scenario: TC-2  login should not contain spaces in the middle
   When  enter data: login "www  www", name "vv", password "tests1", conf_pass "tests1", email "user03@mail.ru"
