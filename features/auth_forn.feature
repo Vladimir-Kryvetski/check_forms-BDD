@@ -1,7 +1,6 @@
 Feature: auth form checks
 Background: open index page and database for all auth tests
   Given "http://hr2test.dev-bitrix.by/" page is opened
-  And "../../htdocs/DX/database/user.json" is opened
 
 Scenario: TC-1 Check that password crypted by dots symbols
   Then password field must have type password
